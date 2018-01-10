@@ -1,0 +1,80 @@
+<html>
+	<head>
+		<title>Cake</title>
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	</head>
+	<body>
+		<form action="#" method="GET">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-4">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-xs-12">
+									<h1>Cake Math</h1>
+								</div>
+								<div class="col-xs-12 col-sm-6">
+									<label for="radius">Radius:</label>
+								</div>
+								<div class="col-xs-12 col-sm-6">
+									<input type="number" id="radius" name="radius" >
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-sm-6">
+									<label for="height">
+										Height:
+									</label>
+								</div>
+								<div class="col-xs-12 col-sm-6">
+									<input type="number" id="height" name="height" >
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-sm-6">
+									<label for="thickness">
+										Thickness:
+									</label>
+								</div>
+								<div class="col-xs-12 col-sm-6">
+									<input type="number" id="thickness" name="thickness" >
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-sm-6">
+									&nbsp;
+								</div>
+								<div class="col-xs-12 col-sm-6">
+									<button id="compute" name="compute">Compute</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+		<script type="text/javascript">
+			jQuery(document).ready(function(){
+				$('#compute').on('click touch', function(){
+					var radius = $('#radius').val();
+					var height = $('#height').val();
+					var thickness = $('#thickness').val();
+					alert(volume_of_cake_frosting(radius, height, thickness));
+					return false;
+				});
+			});
+			function volume_of_cake_frosting(r, h, th) {
+				var topAndSides = ((2 * 3.14) * (((r + th) * h) + (r + th)**2));
+				var volumeOfCake = ((2 * 3.14) * (r * h + r**2));
+				var betweenTopAndSides = (.5 * th**2 * 2 * 3.14 * r);
+				cubiccm = topAndSides - volumeOfCake + betweenTopAndSides;
+				return cubiccm.toFixed(2) + " cubic centimeters";
+			}
+			var cmcubed = volume_of_cake_frosting(10, 20, .5);
+			console.log(cmcubed); // expect 135
+		</script>
+	</body>
+</html>
